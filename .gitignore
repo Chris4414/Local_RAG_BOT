@@ -1,7 +1,7 @@
 haystack311/
-.env
+*.env
 __pycache__/
 *.pyc
-data/
-.jsonl
-.pdf
+*.jsonl
+*.pdf
+*.json
