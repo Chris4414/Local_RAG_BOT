@@ -1,6 +1,5 @@
 from haystack.components.converters import PyPDFToDocument
 from haystack.components.embedders import SentenceTransformersTextEmbedder
-#from haystack import Document
 from pathlib import Path
 from haystack.components.preprocessors import DocumentSplitter
 import json
