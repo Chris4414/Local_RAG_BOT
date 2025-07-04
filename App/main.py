@@ -13,7 +13,7 @@ embedder.warm_up()
 
 #Reads and saves json to a new Documents list
 Embedded_List = []
-with open("./data/x.jsonl", "r") as f:
+with open("./data/embedded_chunks.jsonl", "r") as f:
     Embedded_List = [Document.from_dict(json.loads(line)) for line in f]
 
 # Write the chunks with their embedding vector into the document_store
@@ -39,7 +39,7 @@ def prompt_builder(q: str):
     for docs in Context_docs:
         Context += docs.content + "\n"
 
-    Context += f"\n Question: {q}"
+    Context += f"\n\n Question: \n{q}"
     return Context
 
 # === Interactive loop ===

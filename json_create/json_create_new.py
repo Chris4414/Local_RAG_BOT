@@ -17,11 +17,10 @@ import json
 # Define the folder containing your PDFs
 base_file = Path(__file__).parent.parent
 pdf_folder = base_file/"PDF's"
-#Path(r"C:\Users\syb3d\OneDrive\Python\3.11\Local_RAG_BOT\PDF's")
+data_folder = base_file/"data"
 
 # Get all PDF files in the folder
 pdf_files = list(pdf_folder.glob("*.pdf"))
-print(pdf_files)
 
 # Initialize the PDF converter 
 pdf_converter = PyPDFToDocument()
@@ -30,7 +29,7 @@ pdf_converter = PyPDFToDocument()
 documents = pdf_converter.run(pdf_files)["documents"]
 
 #Initialize the splitter function. Documents will be chunked in 400 word chunks with 50 overlapping words between chunks.
-splitter = DocumentSplitter(split_by="word", split_length=400, split_overlap=50)
+splitter = DocumentSplitter(split_by="word", split_length=200, split_overlap=25)
 
 #Chunk all documents and store them into split_docs [Document Name, List of Document Chunks[] .content gives a str]
 split_docs = splitter.run(documents=documents)
@@ -52,7 +51,7 @@ for key, value_list in split_docs.items():
     Embedded_List.extend(value_list)
 
 #Writes full embedded list to a New jsonl file
-with open("embedded_chunks.jsonl", "a") as f:
+with open(data_folder/"embedded_chunks.jsonl", "a") as f:
     for item in Embedded_List:
         f.write(json.dumps(item.to_dict()) + "\n")
 
