@@ -4,3 +4,6 @@ Exact Pip Install order:
     Pip install pypdf
 
 Used Python 3.11
+
+Download Ollama
+    ollama run phi3:mini

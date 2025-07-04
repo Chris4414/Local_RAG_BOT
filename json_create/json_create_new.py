@@ -15,10 +15,13 @@ import json
 
 
 # Define the folder containing your PDFs
-pdf_folder = Path(r"C:\Users\Public\Documents\Stored_PDF")
+base_file = Path(__file__).parent.parent
+pdf_folder = base_file/"PDF's"
+#Path(r"C:\Users\syb3d\OneDrive\Python\3.11\Local_RAG_BOT\PDF's")
 
 # Get all PDF files in the folder
 pdf_files = list(pdf_folder.glob("*.pdf"))
+print(pdf_files)
 
 # Initialize the PDF converter 
 pdf_converter = PyPDFToDocument()
